@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Car {
@@ -6,11 +7,11 @@ public class Car {
     private String brand;
     private String model;
     private String fuelType;
-    private Date firstRegistrationDate;
+    private LocalDate firstRegistrationDate;
     private int odometer;
     private int carTypeId;
 
-    public Car(String registrationNumber, String brand, String model, String fuelType, Date firstRegistrationDate, int odometer, int carTypeId) {
+    public Car(String registrationNumber, String brand, String model, String fuelType, LocalDate firstRegistrationDate, int odometer, int carTypeId) {
         this.registrationNumber = registrationNumber;
         this.brand = brand;
         this.model = model;
@@ -36,7 +37,7 @@ public class Car {
         return fuelType;
     }
 
-    public Date getFirstRegistrationDate() {
+    public LocalDate getFirstRegistrationDate() {
         return firstRegistrationDate;
     }
 
@@ -64,7 +65,7 @@ public class Car {
         this.fuelType = fuelType;
     }
 
-    public void setFirstRegistrationDate(Date firstRegistrationDate) {
+    public void setFirstRegistrationDate(LocalDate firstRegistrationDate) {
         this.firstRegistrationDate = firstRegistrationDate;
     }
 
