@@ -29,22 +29,21 @@ public class CarDAO {
             throw new RuntimeException(e);
         }
     }
-/*
-    public Customer getCustomerById(String driverLicenseNumber) {
-        String query = "select * from customer where driverLicenseNumber = ?";
+
+    public Car getCarByRegNr(String registrationNumber) {
+        String query = "select * from car where registrationNumber = ?";
         try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
-            ps.setString(1, driverLicenseNumber);
+            ps.setString(1, registrationNumber);
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
-                return new Customer(
-                        rs.getString("driverLicenseNumber"),
-                        rs.getString("fName"),
-                        rs.getString("lName"),
-                        rs.getString("address"),
-                        new City(rs.getString("zip"),"city"),
-                        rs.getString("mobilePhone"),
-                        rs.getString("email"),
-                        rs.getDate("driverSinceDate").toLocalDate()
+                return new Car(
+                        rs.getString("registrationNumber"),
+                        rs.getString("brand"),
+                        rs.getString("model"),
+                        rs.getString("fuelType"),
+                        rs.getDate("firstRegistrationDate").toLocalDate(),
+                        rs.getInt("odometer"),
+                        rs.getInt("carType_Id")
                 );
             }
         } catch (SQLException e) {
@@ -53,31 +52,25 @@ public class CarDAO {
         return null;
     }
 
-    public void updateCustomer(Customer customer) {
-        String query = "update customer " +
-                "set fName = ?,lName = ?,address = ?,zip = ?,mobilePhone = ?,email = ?, driverSinceDate = ? " +
-                "where driverLicenseNumber = ?";
-        try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
-            ps.setString(1, customer.getFName());
-            ps.setString(2, customer.getlName());
-            ps.setString(3, customer.getAddress());
-            ps.setString(4, customer.getCity().getZip());
-            ps.setString(5, customer.getPhoneNumber());
-            ps.setString(6, customer.getEmail());
-            ps.setDate(7, Date.valueOf(customer.getDriverSinceDate()));
-            ps.setString(8, customer.getDriverLicenseNumber());
+    public void updateCar(Car car) {
+        String query = "UPDATE car " +
+                "SET odometer = ? " +
+                "WHERE registrationNumber = ?";
+        try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
+            ps.setInt(1, car.getOdometer());
+            ps.setString(2, car.getRegistrationNumber());
             ps.executeUpdate();
-            System.out.println("Customer updated successfully");
+            System.out.println("Car updated successfully");
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 
-    public void deleteCustomer(Customer customer) {
-        String query = "delete from customer where driverLicenseNumber = ?";
+    public void deleteCar(Car car) {
+        String query = "delete from car where registrationNumber = ?";
         try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
-            ps.setString(1, customer.getDriverLicenseNumber());
+            ps.setString(1, car.getRegistrationNumber());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,5 +78,5 @@ public class CarDAO {
         }
     }
 
- */
+
 }

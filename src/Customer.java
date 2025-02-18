@@ -35,7 +35,7 @@ public class Customer {
         return fName;
     }
 
-    public String getlName() {
+    public String getLName() {
         return lName;
     }
 

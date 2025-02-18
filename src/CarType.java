@@ -3,22 +3,22 @@ public class CarType {
     private int carTypeId;
     private String typeName;
     private boolean automaticGear;
-    private boolean aircondition;
-    private boolean cruisecontrol;
-    private boolean leatherseats;
+    private boolean airCondition;
+    private boolean cruiseControl;
+    private boolean leatherSeats;
     private int engineSize;
-    private int horsepower;
+    private int horsePower;
     private int seats;
 
-    public CarType(int carTypeId, String typeName, boolean automaticGear, boolean aircondition, boolean cruisecontrol, boolean leatherseats, int engineSize, int horsepower, int seats) {
+    public CarType(int carTypeId, String typeName, boolean automaticGear, boolean airCondition, boolean cruiseControl, boolean leatherSeats, int engineSize, int horsePower, int seats) {
         this.carTypeId = carTypeId;
         this.typeName = typeName;
         this.automaticGear = automaticGear;
-        this.aircondition = aircondition;
-        this.cruisecontrol = cruisecontrol;
-        this.leatherseats = leatherseats;
+        this.airCondition = airCondition;
+        this.cruiseControl = cruiseControl;
+        this.leatherSeats = leatherSeats;
         this.engineSize = engineSize;
-        this.horsepower = horsepower;
+        this.horsePower = horsePower;
         this.seats = seats;
     }
 
@@ -26,7 +26,7 @@ public class CarType {
         return carTypeId;
     }
 
-    public String gettypeName() {
+    public String getTypeName() {
         return typeName;
     }
 
@@ -34,24 +34,24 @@ public class CarType {
         return automaticGear;
     }
 
-    public boolean isAircondition() {
-        return aircondition;
+    public boolean isAirCondition() {
+        return airCondition;
     }
 
-    public boolean isCruisecontrol() {
-        return cruisecontrol;
+    public boolean isCruiseControl() {
+        return cruiseControl;
     }
 
-    public boolean isLeatherseats() {
-        return leatherseats;
+    public boolean isLeatherSeats() {
+        return leatherSeats;
     }
 
     public int getEngineSize() {
         return engineSize;
     }
 
-    public int getHorsepower() {
-        return horsepower;
+    public int getHorsePower() {
+        return horsePower;
     }
 
     public int getSeats() {
@@ -62,7 +62,7 @@ public class CarType {
         this.carTypeId = carTypeId;
     }
 
-    public void setVarChar(String typeName) {
+    public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
 
@@ -70,24 +70,24 @@ public class CarType {
         this.automaticGear = automaticGear;
     }
 
-    public void setAircondition(boolean aircondition) {
-        this.aircondition = aircondition;
+    public void setAirCondition(boolean airCondition) {
+        this.airCondition = airCondition;
     }
 
-    public void setCruisecontrol(boolean cruisecontrol) {
-        this.cruisecontrol = cruisecontrol;
+    public void setCruiseControl(boolean cruiseControl) {
+        this.cruiseControl = cruiseControl;
     }
 
-    public void setLeatherseats(boolean leatherseats) {
-        this.leatherseats = leatherseats;
+    public void setLeatherSeats(boolean leatherSeats) {
+        this.leatherSeats = leatherSeats;
     }
 
     public void setEngineSize(int engineSize) {
         this.engineSize = engineSize;
     }
 
-    public void setHorsepower(int horsepower) {
-        this.horsepower = horsepower;
+    public void setHorsePower(int horsePower) {
+        this.horsePower = horsePower;
     }
 
     public void setSeats(int seats) {
@@ -98,13 +98,13 @@ public class CarType {
     public String toString() {
         return "CarType{" +
                 "carTypeId=" + carTypeId +
-                ", varChar='" + typeName + '\'' +
+                ", typeName='" + typeName + '\'' +
                 ", automaticGear=" + automaticGear +
-                ", aircondition=" + aircondition +
-                ", cruisecontrol=" + cruisecontrol +
-                ", leatherseats=" + leatherseats +
+                ", airCondition=" + airCondition +
+                ", cruiseControl=" + cruiseControl +
+                ", leatherSeats=" + leatherSeats +
                 ", engineSize=" + engineSize +
-                ", horsepower=" + horsepower +
+                ", horsePower=" + horsePower +
                 ", seats=" + seats +
                 '}';
     }

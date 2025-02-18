@@ -10,6 +10,17 @@ public class Rental {
     private String registrationNumber;
     private String driverlicenseNumber;
 
+    // Constructor without rentalId
+    public Rental(LocalDateTime fromDateTime, LocalDateTime toDateTime, int maxKm, int startOdometer, String registrationNumber, String driverlicenseNumber) {
+        this.fromDateTime = fromDateTime;
+        this.toDateTime = toDateTime;
+        this.maxKm = maxKm;
+        this.startOdometer = startOdometer;
+        this.registrationNumber = registrationNumber;
+        this.driverlicenseNumber = driverlicenseNumber;
+    }
+
+    // Constructor with rentalId
     public Rental(int rentalId, LocalDateTime fromDateTime, LocalDateTime toDateTime, int maxKm, int startOdometer, String registrationNumber, String driverlicenseNumber) {
         this.rentalId = rentalId;
         this.fromDateTime = fromDateTime;

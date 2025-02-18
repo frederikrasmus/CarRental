@@ -18,7 +18,7 @@ public class CustomerDAO {
         try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setString(1, customer.getDriverLicenseNumber());
             ps.setString(2, customer.getFName());
-            ps.setString(3, customer.getlName());
+            ps.setString(3, customer.getLName());
             ps.setString(4, customer.getAddress());
             ps.setString(5, customer.getCity().getZip());
             ps.setString(6, customer.getPhoneNumber());
@@ -60,7 +60,7 @@ public class CustomerDAO {
                 "where driverLicenseNumber = ?";
             try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
                 ps.setString(1, customer.getFName());
-                ps.setString(2, customer.getlName());
+                ps.setString(2, customer.getLName());
                 ps.setString(3, customer.getAddress());
                 ps.setString(4, customer.getCity().getZip());
                 ps.setString(5, customer.getPhoneNumber());
@@ -75,11 +75,12 @@ public class CustomerDAO {
         }
     }
 
-    public void deleteCustomer(Customer customer) {
+    public void deleteCustomer(String driverLicenseNumber) {
         String query = "delete from customer where driverLicenseNumber = ?";
         try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
-            ps.setString(1, customer.getDriverLicenseNumber());
+            ps.setString(1, driverLicenseNumber);
             ps.executeUpdate();
+            System.out.println("Customer deleted successfully");
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
