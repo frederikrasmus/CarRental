@@ -11,7 +11,8 @@ public class Rental {
     private String driverlicenseNumber;
 
     // Constructor without rentalId
-    public Rental(LocalDateTime fromDateTime, LocalDateTime toDateTime, int maxKm, int startOdometer, String registrationNumber, String driverlicenseNumber) {
+    public Rental(LocalDateTime fromDateTime, LocalDateTime toDateTime, int maxKm,
+                  int startOdometer, String registrationNumber, String driverlicenseNumber) {
         this.fromDateTime = fromDateTime;
         this.toDateTime = toDateTime;
         this.maxKm = maxKm;
@@ -21,7 +22,8 @@ public class Rental {
     }
 
     // Constructor with rentalId
-    public Rental(int rentalId, LocalDateTime fromDateTime, LocalDateTime toDateTime, int maxKm, int startOdometer, String registrationNumber, String driverlicenseNumber) {
+    public Rental(int rentalId, LocalDateTime fromDateTime, LocalDateTime toDateTime,
+                  int maxKm, int startOdometer, String registrationNumber, String driverlicenseNumber) {
         this.rentalId = rentalId;
         this.fromDateTime = fromDateTime;
         this.toDateTime = toDateTime;

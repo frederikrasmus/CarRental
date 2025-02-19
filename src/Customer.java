@@ -14,7 +14,8 @@ public class Customer {
     private LocalDate driverSinceDate;
 
 
-    public Customer(String driverLicenseNumber, String fName, String lName, String address, City city, String mobilePhone, String email, LocalDate driverSinceDate) {
+    public Customer(String driverLicenseNumber, String fName, String lName,
+                    String address, City city, String mobilePhone, String email, LocalDate driverSinceDate) {
         this.driverLicenseNumber = driverLicenseNumber;
         this.fName = fName;
         this.lName = lName;

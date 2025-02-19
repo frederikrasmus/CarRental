@@ -86,7 +86,8 @@ public class CarUI {
         int carTypeId = scanner.nextInt();
         scanner.nextLine();
 
-        Car car = new Car(registrationNumber, brand, model, fuelType, LocalDate.parse(firstRegistrationDate), odometer, carTypeId);
+        Car car = new Car(registrationNumber, brand, model, fuelType,
+                LocalDate.parse(firstRegistrationDate), odometer, carTypeId);
         carService.addCar(car);
     }
 
@@ -130,7 +131,8 @@ public class CarUI {
             fuelType = existingCar.getFuelType();
         }
 
-        System.out.print("Enter First Registration Date (" + existingCar.getFirstRegistrationDate() + ") (YYYY-MM-DD) or 0 to skip: ");
+        System.out.print("Enter First Registration Date ("
+                + existingCar.getFirstRegistrationDate() + ") (YYYY-MM-DD) or 0 to skip: ");
         String firstRegistrationDate = scanner.nextLine();
         LocalDate firstRegistrationDateParsed;
         if (firstRegistrationDate.equals("0")) {

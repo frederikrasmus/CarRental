@@ -127,7 +127,8 @@ public class CarTypeUI {
         scanner.nextLine();
 
 
-        CarType carType = new CarType(typeName,automaticGear,airCondition,cruiseControl,leatherSeats,engineSize,horsePower,seats);
+        CarType carType = new CarType(typeName,automaticGear,airCondition,
+                cruiseControl,leatherSeats,engineSize,horsePower,seats);
         carTypeService.addCarType(carType);
     }
 
@@ -180,7 +181,8 @@ public class CarTypeUI {
             System.out.println("Invalid choice, try again");
         }
 
-        System.out.println("Select Air Condition (" + (existingCarType.isAirCondition() ? "Yes" : "No") + ") or 0 to skip:");
+        System.out.println("Select Air Condition (" + (existingCarType.isAirCondition() ?
+                "Yes" : "No") + ") or 0 to skip:");
         System.out.println("1. Yes");
         System.out.println("2. No");
         boolean airCondition = existingCarType.isAirCondition();
@@ -199,7 +201,8 @@ public class CarTypeUI {
             System.out.println("Invalid choice, try again");
         }
 
-        System.out.println("Select Cruise Control (" + (existingCarType.isCruiseControl() ? "Yes" : "No") + ") or 0 to skip:");
+        System.out.println("Select Cruise Control (" + (existingCarType.isCruiseControl() ?
+                "Yes" : "No") + ") or 0 to skip:");
         System.out.println("1. Yes");
         System.out.println("2. No");
         boolean cruiseControl = existingCarType.isCruiseControl();
@@ -218,7 +221,8 @@ public class CarTypeUI {
             System.out.println("Invalid choice, try again");
         }
 
-        System.out.println("Select Leather Seats (" + (existingCarType.isLeatherSeats() ? "Yes" : "No") + ") or 0 to skip:");
+        System.out.println("Select Leather Seats (" + (existingCarType.isLeatherSeats() ?
+                "Yes" : "No") + ") or 0 to skip:");
         System.out.println("1. Yes");
         System.out.println("2. No");
         boolean leatherSeats = existingCarType.isLeatherSeats();

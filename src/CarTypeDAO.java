@@ -58,7 +58,8 @@ public class CarTypeDAO {
 
     public void updateCarType(CarType carType) {
         String query = "update car_type " +
-                "set typeName = ?, automaticGear = ?, airCondition = ?, cruiseControl = ?, leatherSeats = ?, engineSize = ?, horsePower = ?, seats = ? " +
+                "set typeName = ?, automaticGear = ?, airCondition = ?, cruiseControl = ?, " +
+                "leatherSeats = ?, engineSize = ?, horsePower = ?, seats = ? " +
                 "where carType_id = ?";
         try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setString(1, carType.getTypeName());
@@ -113,6 +114,5 @@ public class CarTypeDAO {
         }
         return carTypes;
     }
-
 }
 

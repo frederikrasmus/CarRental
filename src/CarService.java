@@ -36,6 +36,7 @@ public class CarService {
 
     // Valideringsmetode som sikrer at car har et registreringsnummer, et brand og en model.
     private boolean isValidCar(Car car) {
-        return !car.getRegistrationNumber().isEmpty() && !car.getBrand().isEmpty() && !car.getModel().isEmpty();
+        return !car.getRegistrationNumber().isEmpty() &&
+                !car.getBrand().isEmpty() && !car.getModel().isEmpty();
     }
 }

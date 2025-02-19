@@ -38,6 +38,7 @@ public class CustomerService {
 
     // Valideringsmetode som sikrer at customer har en valid mail og et navn og efternavn.
     private boolean isValidCustomer(Customer customer) {
-        return customer.getEmail().contains("@") && !customer.getFName().isEmpty() && !customer.getLName().isEmpty();
+        return customer.getEmail().contains("@") &&
+                !customer.getFName().isEmpty() && !customer.getLName().isEmpty();
     }
 }

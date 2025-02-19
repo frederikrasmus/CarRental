@@ -18,21 +18,22 @@ public class Database {
 
     public Database() {
         createConnection();
+        System.out.println("Connection to database succeeded");
     }
 
     public static Database getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new Database();
         }
         return instance;
     }
+
     // Denne metode opretter forbindelse til database
     public void createConnection() {
 
         try {
             connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
             statement = connection.createStatement();
-            System.out.println("Connection to database succeeded");
         } catch (SQLException e) {
             throw new RuntimeException("Failed to establish connection", e);
         }

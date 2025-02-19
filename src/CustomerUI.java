@@ -65,7 +65,8 @@ public class CustomerUI {
         System.out.print("Enter Driver Since Date (YYYY-MM-DD): ");
         String driverSinceDate = scanner.nextLine();
 
-        Customer customer = new Customer(driverLicenseNumber, fName, lName, address, new City(zip, ""), mobilePhone, email, LocalDate.parse(driverSinceDate));
+        Customer customer = new Customer(driverLicenseNumber, fName, lName, address, new City(zip, ""),
+                mobilePhone, email, LocalDate.parse(driverSinceDate));
         customerService.addCustomer(customer);
     }
 

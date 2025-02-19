@@ -11,7 +11,8 @@ public class Car {
     private int odometer;
     private int carTypeId;
 
-    public Car(String registrationNumber, String brand, String model, String fuelType, LocalDate firstRegistrationDate, int odometer, int carTypeId) {
+    public Car(String registrationNumber, String brand, String model,
+               String fuelType, LocalDate firstRegistrationDate, int odometer, int carTypeId) {
         this.registrationNumber = registrationNumber;
         this.brand = brand;
         this.model = model;
