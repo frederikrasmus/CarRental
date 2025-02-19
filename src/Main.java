@@ -31,6 +31,7 @@ public class Main {
                     CarUI.manageCars(scanner);
                     break;
                 case 4:
+                    CarTypeUI.manageCarTypes(scanner);
                     break;
                 case 0:
                     running = false;

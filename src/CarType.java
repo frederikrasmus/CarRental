@@ -10,6 +10,19 @@ public class CarType {
     private int horsePower;
     private int seats;
 
+    // Konstruktør uden CarTypeId, cartypeId er auto_increment i mit table
+    public CarType( String typeName, boolean automaticGear, boolean airCondition, boolean cruiseControl, boolean leatherSeats, int engineSize, int horsePower, int seats) {
+        this.typeName = typeName;
+        this.automaticGear = automaticGear;
+        this.airCondition = airCondition;
+        this.cruiseControl = cruiseControl;
+        this.leatherSeats = leatherSeats;
+        this.engineSize = engineSize;
+        this.horsePower = horsePower;
+        this.seats = seats;
+    }
+
+    // Konstruktør med CarTypeId
     public CarType(int carTypeId, String typeName, boolean automaticGear, boolean airCondition, boolean cruiseControl, boolean leatherSeats, int engineSize, int horsePower, int seats) {
         this.carTypeId = carTypeId;
         this.typeName = typeName;
