@@ -1,6 +1,7 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarTypeDAO {
@@ -12,9 +13,9 @@ public class CarTypeDAO {
     }
 
     public void insertCarType(CarType carType) {
-        String query = "INSERT INTO car_type " +
+        String query = "insert into car_type " +
                 "(typeName, automaticGear, airCondition, cruiseControl, leatherSeats, engineSize, horsePower, seats) " +
-                "VALUES (?,?,?,?,?,?,?,?)";
+                "values (?,?,?,?,?,?,?,?)";
         try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setString(1, carType.getTypeName());
             ps.setBoolean(2, carType.isAutomaticGear());
@@ -32,7 +33,7 @@ public class CarTypeDAO {
     }
 
     public CarType getCarTypeById(int carTypeId) {
-        String query = "SELECT * FROM car_type WHERE carType_id = ?";
+        String query = "select * from car_type where carType_id = ?";
         try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setInt(1, carTypeId);
             ResultSet rs = ps.executeQuery();
@@ -56,9 +57,9 @@ public class CarTypeDAO {
     }
 
     public void updateCarType(CarType carType) {
-        String query = "UPDATE car_type " +
-                "SET typeName = ?, automaticGear = ?, airCondition = ?, cruiseControl = ?, leatherSeats = ?, engineSize = ?, horsePower = ?, seats = ? " +
-                "WHERE carType_id = ?";
+        String query = "update car_type " +
+                "set typeName = ?, automaticGear = ?, airCondition = ?, cruiseControl = ?, leatherSeats = ?, engineSize = ?, horsePower = ?, seats = ? " +
+                "where carType_id = ?";
         try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setString(1, carType.getTypeName());
             ps.setBoolean(2, carType.isAutomaticGear());
@@ -78,7 +79,7 @@ public class CarTypeDAO {
     }
 
     public void deleteCarType(int carTypeId) {
-        String query = "DELETE FROM car_type WHERE carType_id = ?";
+        String query = "delete from car_type where carType_id = ?";
         try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setInt(1, carTypeId);
             ps.executeUpdate();
@@ -88,4 +89,31 @@ public class CarTypeDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public ArrayList<CarType> getAllCarTypes() {
+        ArrayList<CarType> carTypes = new ArrayList<>();
+        String query = "select * from car_type";
+        try(PreparedStatement ps = database.getConnection().prepareStatement(query);
+        ResultSet rs = ps.executeQuery()) {
+            while(rs.next()) {
+                carTypes.add(new CarType(
+                        rs.getInt("carType_Id"),
+                        rs.getString("typeName"),
+                        rs.getBoolean("automaticGear"),
+                        rs.getBoolean("airCondition"),
+                        rs.getBoolean("cruiseControl"),
+                        rs.getBoolean("leatherSeats"),
+                        rs.getInt("engineSize"),
+                        rs.getInt("horsePower"),
+                        rs.getInt("seats")
+                ));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return carTypes;
+    }
+
 }
+

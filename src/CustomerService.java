@@ -8,7 +8,7 @@ public class CustomerService {
     }
 
     public void addCustomer(Customer customer) {
-        // Validate customer data
+        // Validerer customer data
         if (isValidCustomer(customer)) {
             customerDAO.insertCustomer(customer);
             System.out.println("Customer added successfully");
@@ -33,6 +33,7 @@ public class CustomerService {
 
     public void deleteCustomer(String driverLicenseNumber) {
         customerDAO.deleteCustomer(driverLicenseNumber);
+        System.out.println("Customer deleted successfully");
     }
 
     // Valideringsmetode som sikrer at customer har en valid mail og et navn og efternavn.

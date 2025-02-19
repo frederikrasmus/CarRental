@@ -53,9 +53,9 @@ public class CarDAO {
     }
 
     public void updateCar(Car car) {
-        String query = "UPDATE car " +
-                "SET odometer = ? " +
-                "WHERE registrationNumber = ?";
+        String query = "update car " +
+                "set odometer = ? " +
+                "where registrationNumber = ?";
         try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setInt(1, car.getOdometer());
             ps.setString(2, car.getRegistrationNumber());
@@ -67,10 +67,10 @@ public class CarDAO {
         }
     }
 
-    public void deleteCar(Car car) {
+    public void deleteCar(String registrationNumber) {
         String query = "delete from car where registrationNumber = ?";
         try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
-            ps.setString(1, car.getRegistrationNumber());
+            ps.setString(1, registrationNumber);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

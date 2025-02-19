@@ -28,6 +28,7 @@ public class Main {
                 case 2:
                     break;
                 case 3:
+                    CarUI.manageCars(scanner);
                     break;
                 case 4:
                     break;
@@ -37,10 +38,8 @@ public class Main {
                 default:
                     System.out.println("Please try again");
             }
-
         }
     scanner.close();
-
     }
 }
 /*

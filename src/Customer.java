@@ -108,7 +108,7 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "driverLiscenseNumber='" + driverLicenseNumber + '\'' +
-                ", name='" + fName + lName + '\'' +
+                ", name='" + fName + " " + lName + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", phoneNumber='" + mobilePhone + '\'' +

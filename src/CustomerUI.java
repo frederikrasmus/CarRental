@@ -26,10 +26,10 @@ public class CustomerUI {
                     viewCustomer(scanner);
                     break;
                 case 3:
-                    // Update customer logic
+                    updateCustomer(scanner);
                     break;
                 case 4:
-                    // Delete customer logic
+                   deleteCustomer(scanner);
                     break;
                 case 5:
                     running = false;
@@ -77,7 +77,72 @@ public class CustomerUI {
     }
 
     private static void updateCustomer(Scanner scanner) {
+        System.out.println("Enter Driver License Number to update Customer");
+        String dln = scanner.nextLine();
 
+        Customer customer = customerService.getCustomer(dln);
+        if(customer == null) {
+            System.out.println("Customer not found");
+            return;
+        }
+
+        System.out.println("Enter First Name (" + customer.getFName() + ") or 0 to skip: ");
+        String fName = scanner.nextLine();
+        if(fName.equals("0")) {
+            fName = customer.getFName();
+        }
+
+        System.out.println("Enter Last Name (" + customer.getLName() + ") or 0 to skip:  ");
+        String lName = scanner.nextLine();
+        if(lName.equals("0")) {
+            lName = customer.getLName();
+        }
+
+        System.out.println("Enter Address (" + customer.getAddress() + ") or 0 to skip: ");
+        String address = scanner.nextLine();
+        if(address.equals("0")) {
+            address = customer.getAddress();
+        }
+
+        System.out.println("Enter Zip (" + customer.getCity().getZip() + ") or 0 to skip: ");
+        String zip = scanner.nextLine();
+        if(zip.equals("0")) {
+            zip = customer.getCity().getZip();
+        }
+
+        System.out.println("Enter Phone Number (" + customer.getPhoneNumber() + ") or 0 to skip: ");
+        String mobilePhone = scanner.nextLine();
+        if(mobilePhone.equals("0")) {
+            mobilePhone = customer.getPhoneNumber();
+        }
+
+        System.out.println("Enter Email (" + customer.getEmail() + ") or 0 to skip: ");
+        String email = scanner.nextLine();
+        if(email.equals("0")) {
+            email = customer.getEmail();
+        }
+
+        System.out.println("Enter Driver Since Date (" + customer.getDriverSinceDate() + ") " +
+                "(YYYY-MM-DD) or 0 to skip: ");
+        String driverSinceDate = scanner.nextLine();
+        LocalDate driverSinceDateParsed;
+        if(driverSinceDate.equals("0")) {
+            driverSinceDateParsed = customer.getDriverSinceDate();
+        } else {
+            driverSinceDateParsed = LocalDate.parse(driverSinceDate);
+        }
+
+        Customer updatedCustomer = new Customer(dln,fName,lName,address,new City(zip, ""),
+                mobilePhone,email,driverSinceDateParsed);
+
+        customerService.updateCustomer(updatedCustomer);
+    }
+
+    private static void deleteCustomer(Scanner scanner) {
+        System.out.println("Enter Driver License Number to delete Customer");
+        String dln = scanner.nextLine();
+
+        customerService.deleteCustomer(dln);
     }
 
 }

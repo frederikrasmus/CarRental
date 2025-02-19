@@ -54,6 +54,7 @@ public class CustomerDAO {
         return null;
     }
 
+    // Opdaterer en kunde
     public void updateCustomer(Customer customer) {
         String query = "update customer " +
                 "set fName = ?,lName = ?,address = ?,zip = ?,mobilePhone = ?,email = ?, driverSinceDate = ? " +
@@ -75,6 +76,7 @@ public class CustomerDAO {
         }
     }
 
+    // Sletter en kunde
     public void deleteCustomer(String driverLicenseNumber) {
         String query = "delete from customer where driverLicenseNumber = ?";
         try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
