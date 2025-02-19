@@ -89,14 +89,14 @@ public class Rental {
 
     @Override
     public String toString() {
-        return "Rental{" +
-                "rentalId=" + rentalId +
-                ", fromDateTime=" + fromDateTime +
-                ", toDateTime=" + toDateTime +
-                ", maxKm=" + maxKm +
-                ", startOdometer=" + startOdometer +
-                ", registrationNumber='" + registrationNumber + '\'' +
-                ", driverlicenseNumber='" + driverlicenseNumber + '\'' +
-                '}';
+        return
+                "RentalId: " + rentalId + '\n' +
+                        "FromDateTime: " + fromDateTime + '\n' +
+                        "ToDateTime: " + toDateTime + '\n' +
+                        "MaxKm: " + maxKm + '\n' +
+                        "StartOdometer: " + startOdometer + '\n' +
+                        "RegistrationNumber: " + registrationNumber + '\n' +
+                        "DriverLicenseNumber: " + driverlicenseNumber + '\n';
+
     }
 }

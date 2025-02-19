@@ -21,7 +21,7 @@ public class LoadingScreen {
             System.out.print("\r" + bar);
             System.out.flush();
 
-            Thread.sleep(35);
+            Thread.sleep(1);
         }
         System.out.println("\nLoading Complete!");
     }

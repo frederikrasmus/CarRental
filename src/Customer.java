@@ -106,14 +106,13 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "driverLiscenseNumber='" + driverLicenseNumber + '\'' +
-                ", name='" + fName + " " + lName + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", phoneNumber='" + mobilePhone + '\'' +
-                ", email='" + email + '\'' +
-                ", driverSinceDate=" + driverSinceDate +
-                '}';
+        return
+                "DriverLicenseNumber: " + driverLicenseNumber + '\n' +
+                        "Name: " + fName + " " + lName + '\n' +
+                        "Address: " + address + '\n' +
+                        "City: " + city + '\n' +
+                        "PhoneNumber: " + mobilePhone + '\n' +
+                        "Email: " + email + '\n' +
+                        "DriverSinceDate: " + driverSinceDate + '\n';
     }
 }

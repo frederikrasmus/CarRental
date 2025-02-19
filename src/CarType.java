@@ -109,16 +109,15 @@ public class CarType {
 
     @Override
     public String toString() {
-        return "CarType{" +
-                "carTypeId=" + carTypeId +
-                ", typeName='" + typeName + '\'' +
-                ", automaticGear=" + automaticGear +
-                ", airCondition=" + airCondition +
-                ", cruiseControl=" + cruiseControl +
-                ", leatherSeats=" + leatherSeats +
-                ", engineSize=" + engineSize +
-                ", horsePower=" + horsePower +
-                ", seats=" + seats +
-                '}';
+        return
+                "CarTypeId: " + carTypeId + '\n' +
+                        "TypeName: " + typeName + '\n' +
+                        "AutomaticGear: " + automaticGear + '\n' +
+                        "AirCondition: " + airCondition + '\n' +
+                        "CruiseControl: " + cruiseControl + '\n' +
+                        "LeatherSeats: " + leatherSeats + '\n' +
+                        "EngineSize: " + engineSize + '\n' +
+                        "HorsePower: " + horsePower + '\n' +
+                        "Seats: " + seats + '\n';
     }
 }

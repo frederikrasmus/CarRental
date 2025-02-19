@@ -52,9 +52,9 @@ public class RentalDAO {
     }
 
     public void updateRental(Rental rental) {
-        String query = "UPDATE rental " +
-                "SET fromDateTime = ?, toDateTime = ?, maxKm = ?, startOdometer = ?, registrationNumber = ?, driverLicenseNumber = ? " +
-                "WHERE rental_id = ?";
+        String query = "update rental " +
+                "set fromDateTime = ?, toDateTime = ?, maxKm = ?, startOdometer = ?, registrationNumber = ?, driverLicenseNumber = ? " +
+                "where rental_id = ?";
         try (PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setTimestamp(1, Timestamp.valueOf(rental.getFromDateTime()));
             ps.setTimestamp(2, Timestamp.valueOf(rental.getToDateTime()));
