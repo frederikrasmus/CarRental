@@ -125,10 +125,23 @@ public class CarUI {
             model = existingCar.getModel();
         }
 
-        System.out.print("Enter Fuel Type (" + existingCar.getFuelType() + ") or 0 to skip: ");
-        String fuelType = scanner.nextLine();
-        if (fuelType.equals("0")) {
-            fuelType = existingCar.getFuelType();
+        System.out.println("Select New Fuel Type (" + existingCar.getFuelType() + ") or 0 to skip: ");
+        System.out.println("1. Petrol");
+        System.out.println("2. Diesel");
+        String fuelType;
+        while (true) {
+            String choice = scanner.nextLine();
+            if (choice.equals("1")) {
+                fuelType = "Petrol";
+                break;
+            } if (choice.equals("2")) {
+                fuelType = "Diesel";
+                break;
+            } else if (choice.equals("0")) {
+                fuelType = existingCar.getFuelType();
+                break;
+            }
+            System.out.println("Invalid choice, try again");
         }
 
         System.out.print("Enter First Registration Date ("
@@ -148,7 +161,11 @@ public class CarUI {
             odometer = existingCar.getOdometer();
         }
 
-        System.out.print("Enter Car Type ID (" + existingCar.getCarTypeId() + ") or 0 to skip: ");
+        ArrayList<CarType> carTypes = carTypeService.getAllCarTypes();
+        System.out.println("Choose a Car Type or 0 to skip: ");
+        for(CarType carType : carTypes) {
+            System.out.println(carType.getCarTypeId() + ". " + carType.getTypeName());
+        }
         int carTypeId = scanner.nextInt();
         scanner.nextLine();
         if (carTypeId == 0) {

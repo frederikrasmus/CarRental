@@ -53,8 +53,18 @@ public class CustomerUI {
         System.out.print("Enter Address: ");
         String address = scanner.nextLine();
 
-        System.out.print("Enter Zip: ");
-        String zip = scanner.nextLine();
+        String zip;
+        while(true) {
+            System.out.print("Enter Zip: ");
+            zip = scanner.nextLine();
+
+            if (customerService.isZipValid(zip)) {
+                break;
+            } else {
+                System.out.println("Invalid zip. Please enter valid zip Code");
+            }
+        }
+
 
         System.out.print("Enter Mobile Phone: ");
         String mobilePhone = scanner.nextLine();

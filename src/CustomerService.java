@@ -36,6 +36,10 @@ public class CustomerService {
         System.out.println("Customer deleted successfully");
     }
 
+    public boolean isZipValid(String zip) {
+        return customerDAO.zipIsValid(zip);
+    }
+
     // Valideringsmetode som sikrer at customer har en valid mail og et navn og efternavn.
     private boolean isValidCustomer(Customer customer) {
         return customer.getEmail().contains("@") &&

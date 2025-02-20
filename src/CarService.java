@@ -10,7 +10,6 @@ public class CarService {
         // Validerer car data
         if (isValidCar(car)) {
             carDAO.insertCar(car);
-            System.out.println("Car added successfully");
         } else {
             System.out.println("Invalid customer data");
         }
@@ -23,7 +22,6 @@ public class CarService {
     public void updateCar(Car car) {
         if (isValidCar(car)) {
             carDAO.updateCar(car);
-            System.out.println("Car updated successfully");
         } else {
             System.out.println("Invalid car data");
         }

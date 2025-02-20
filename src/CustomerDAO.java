@@ -31,8 +31,14 @@ public class CustomerDAO {
         }
     }
 
+    // Finder kunde ved hjælp af kundens kørekort nummer
     public Customer getCustomerById(String driverLicenseNumber) {
-        String query = "select * from customer where driverLicenseNumber = ?";
+        String query = "select customer.driverLicenseNumber, customer.fName, customer.lName, " +
+                "customer.address, customer.zip, customer.mobilePhone, customer.email, " +
+                "customer.driverSinceDate, city.city as cityName " +
+                "from customer " +
+                "left join city on customer.zip = city.zip " +
+                "where customer.driverLicenseNumber = ?";
         try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
             ps.setString(1, driverLicenseNumber);
             ResultSet rs = ps.executeQuery();
@@ -42,7 +48,7 @@ public class CustomerDAO {
                         rs.getString("fName"),
                         rs.getString("lName"),
                         rs.getString("address"),
-                        new City(rs.getString("zip"),"city"),
+                        new City(rs.getString("zip"), rs.getString("cityName")),
                         rs.getString("mobilePhone"),
                         rs.getString("email"),
                         rs.getDate("driverSinceDate").toLocalDate()
@@ -89,4 +95,17 @@ public class CustomerDAO {
         }
     }
 
+    public boolean zipIsValid(String zip) {
+        String query = "select count(*) from city where zip = ?";
+        try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
+            ps.setString(1, zip);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
 }
