@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class CarTypeUI {
 
-    private static CarTypeService carTypeService = new CarTypeService(new CarTypeDAO(new Database()));
+    private static Database db = Database.getInstance();
+    private static CarTypeService carTypeService = new CarTypeService(new CarTypeDAO(db));
 
     public static void manageCarTypes(Scanner scanner) {
         boolean running = true;

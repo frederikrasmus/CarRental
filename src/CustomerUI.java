@@ -2,7 +2,8 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CustomerUI {
-    private static CustomerService customerService = new CustomerService(new CustomerDAO(new Database()));
+    private static Database db = Database.getInstance();
+    private static CustomerService customerService = new CustomerService(new CustomerDAO(db));
 
 
     public static void manageCustomers(Scanner scanner) {

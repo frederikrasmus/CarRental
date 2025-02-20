@@ -6,8 +6,9 @@ public class CarService {
         this.carDAO = carDAO;
     }
 
+    // Denne klasse fungerer som bindeled mellem min DAO og min UI.
     public void addCar(Car car) {
-        // Validerer car data
+        // Validerer car data og tilføjer
         if (isValidCar(car)) {
             carDAO.insertCar(car);
         } else {

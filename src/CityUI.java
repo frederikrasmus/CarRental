@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class CityUI {
 
-    private static CityService cityService = new CityService(new CityDAO(new Database()));
+    private static Database db = Database.getInstance();
+    private static CityService cityService = new CityService(new CityDAO(db));
 
     public static void manageCities(Scanner scanner) {
         boolean running = true;

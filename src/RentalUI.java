@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class RentalUI {
 
-    private static RentalService rentalService = new RentalService(new RentalDAO(new Database()));
-    private static CarService carService = new CarService(new CarDAO(new Database()));
-    private static CustomerService customerService = new CustomerService(new CustomerDAO(new Database()));
+    private static Database db = Database.getInstance();
+    private static RentalService rentalService = new RentalService(new RentalDAO(db));
+    private static CarService carService = new CarService(new CarDAO(db));
+    private static CustomerService customerService = new CustomerService(new CustomerDAO(db));
 
     public static void manageRentals(Scanner scanner) {
         boolean running = true;

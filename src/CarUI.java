@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarUI {
-    private static CarService carService = new CarService(new CarDAO(new Database()));
-    private static CarTypeService carTypeService = new CarTypeService(new CarTypeDAO(new Database()));
+
+    private static Database db = Database.getInstance();
+    private static CarService carService = new CarService(new CarDAO(db));
+    private static CarTypeService carTypeService = new CarTypeService(new CarTypeDAO(db));
 
     public static void manageCars(Scanner scanner) {
         boolean running = true;
@@ -14,7 +16,7 @@ public class CarUI {
             System.out.println("Manage Cars");
             System.out.println("1. Add Car");
             System.out.println("2. View Car");
-            System.out.println("3. Update Car");
+            System.out.println("3. Update Car Odometer");
             System.out.println("4. Delete Car");
             System.out.println("5. Back to Main Menu");
             System.out.print("Choose an option: ");
@@ -113,76 +115,18 @@ public class CarUI {
             return;
         }
 
-        System.out.print("Enter Brand (" + existingCar.getBrand() + ") or 0 to skip: ");
-        String brand = scanner.nextLine();
-        if (brand.equals("0")) {
-            brand = existingCar.getBrand();
-        }
-
-        System.out.print("Enter Model (" + existingCar.getModel() + ") or 0 to skip: ");
-        String model = scanner.nextLine();
-        if (model.equals("0")) {
-            model = existingCar.getModel();
-        }
-
-        System.out.println("Select New Fuel Type (" + existingCar.getFuelType() + ") or 0 to skip: ");
-        System.out.println("1. Petrol");
-        System.out.println("2. Diesel");
-        String fuelType;
-        while (true) {
-            String choice = scanner.nextLine();
-            if (choice.equals("1")) {
-                fuelType = "Petrol";
-                break;
-            } if (choice.equals("2")) {
-                fuelType = "Diesel";
-                break;
-            } else if (choice.equals("0")) {
-                fuelType = existingCar.getFuelType();
-                break;
-            }
-            System.out.println("Invalid choice, try again");
-        }
-
-        System.out.print("Enter First Registration Date ("
-                + existingCar.getFirstRegistrationDate() + ") (YYYY-MM-DD) or 0 to skip: ");
-        String firstRegistrationDate = scanner.nextLine();
-        LocalDate firstRegistrationDateParsed;
-        if (firstRegistrationDate.equals("0")) {
-            firstRegistrationDateParsed = existingCar.getFirstRegistrationDate();
-        } else {
-            firstRegistrationDateParsed = LocalDate.parse(firstRegistrationDate);
-        }
-
-        System.out.print("Enter Odometer (" + existingCar.getOdometer() + ") or 0 to skip: ");
-        int odometer = scanner.nextInt();
-        scanner.nextLine();
-        if (odometer == 0) {
+        System.out.print("Enter new Odometer value (" + existingCar.getOdometer() + ") or 0 to skip: ");
+        String odometerInput = scanner.nextLine();
+        int odometer;
+        if (odometerInput.equals("0")) {
             odometer = existingCar.getOdometer();
+        } else {
+            odometer = Integer.parseInt(odometerInput);
+            existingCar.setOdometer(odometer);
         }
 
-        ArrayList<CarType> carTypes = carTypeService.getAllCarTypes();
-        System.out.println("Choose a Car Type or 0 to skip: ");
-        for(CarType carType : carTypes) {
-            System.out.println(carType.getCarTypeId() + ". " + carType.getTypeName());
-        }
-        int carTypeId = scanner.nextInt();
-        scanner.nextLine();
-        if (carTypeId == 0) {
-            carTypeId = existingCar.getCarTypeId();
-        }
-
-        Car updatedCar = new Car(
-                registrationNumber,
-                brand,
-                model,
-                fuelType,
-                firstRegistrationDateParsed,
-                odometer,
-                carTypeId
-        );
-
-        carService.updateCar(updatedCar);
+        carService.updateCar(existingCar);
+        System.out.println("Odometer updated successfully.");
     }
 
     private static void deleteCar(Scanner scanner) {

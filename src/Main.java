@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         LoadingScreen.loadingScreen();
+        Database db = Database.getInstance();
 
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -37,7 +38,8 @@ public class Main {
                     System.out.println("Please try again");
             }
         }
-    scanner.close();
+        scanner.close();
+        db.closeConnection();
     }
 }
 

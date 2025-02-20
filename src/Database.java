@@ -16,14 +16,14 @@ public class Database {
     private static final String PASSWORD = "Gde45daq!";
 
 
-    public Database() {
+    private Database() {
         createConnection();
-        System.out.println("Connection to database succeeded");
     }
 
     public static Database getInstance() {
         if (instance == null) {
             instance = new Database();
+            System.out.println("Connection to database succeeded");
         }
         return instance;
     }
@@ -44,6 +44,7 @@ public class Database {
         try {
             if(statement != null) {
                 statement.close();
+                System.out.println("Connection Closed");
             }
             if(connection != null) {
                 connection.close();

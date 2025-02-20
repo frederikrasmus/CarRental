@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Car {
-
+    //Fields i Car klassen
     private String registrationNumber;
     private String brand;
     private String model;
@@ -11,6 +11,7 @@ public class Car {
     private int odometer;
     private int carTypeId;
 
+    //Konstruktør til instansering.
     public Car(String registrationNumber, String brand, String model,
                String fuelType, LocalDate firstRegistrationDate, int odometer, int carTypeId) {
         this.registrationNumber = registrationNumber;
@@ -21,7 +22,7 @@ public class Car {
         this.odometer = odometer;
         this.carTypeId = carTypeId;
     }
-
+    //Getter metoder
     public String getRegistrationNumber() {
         return registrationNumber;
     }
@@ -78,6 +79,7 @@ public class Car {
         this.carTypeId = carTypeId;
     }
 
+    //To String metode
     @Override
     public String toString() {
         return
