@@ -114,10 +114,10 @@ public class CarType {
         return
                 "CarTypeId: " + carTypeId + '\n' +
                         "TypeName: " + typeName + '\n' +
-                        "AutomaticGear: " + automaticGear + '\n' +
-                        "AirCondition: " + airCondition + '\n' +
-                        "CruiseControl: " + cruiseControl + '\n' +
-                        "LeatherSeats: " + leatherSeats + '\n' +
+                        "AutomaticGear: " + (automaticGear ? "Yes" : "No") + '\n' +
+                        "AirCondition: " + (airCondition ? "Yes" : "No") + '\n' +
+                        "CruiseControl: " + (cruiseControl ? "Yes" : "No") + '\n' +
+                        "LeatherSeats: " + (leatherSeats ? "Yes" : "No") + '\n' +
                         "EngineSize: " + engineSize + '\n' +
                         "HorsePower: " + horsePower + '\n' +
                         "Seats: " + seats + '\n';

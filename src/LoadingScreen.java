@@ -3,6 +3,7 @@ public class LoadingScreen {
     public LoadingScreen() {
     }
 
+    // Loading screen for the fun :D
     public static void loadingScreen() throws InterruptedException {
         int total = 50;
         for(int i = 0; i <= total; i++) {
