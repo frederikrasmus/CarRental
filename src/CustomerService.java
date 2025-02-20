@@ -11,7 +11,6 @@ public class CustomerService {
         // Validerer customer data
         if (isValidCustomer(customer)) {
             customerDAO.insertCustomer(customer);
-            System.out.println("Customer added successfully");
         } else {
             System.out.println("Invalid customer data");
         }
@@ -25,7 +24,6 @@ public class CustomerService {
         // Validate customer data
         if (isValidCustomer(customer)) {
             customerDAO.updateCustomer(customer);
-            System.out.println("Customer updated successfully");
         } else {
             System.out.println("Invalid customer data");
         }
@@ -33,7 +31,6 @@ public class CustomerService {
 
     public void deleteCustomer(String driverLicenseNumber) {
         customerDAO.deleteCustomer(driverLicenseNumber);
-        System.out.println("Customer deleted successfully");
     }
 
     public boolean isZipValid(String zip) {

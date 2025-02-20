@@ -11,7 +11,6 @@ public class CarTypeService {
     public void addCarType(CarType carType) {
         if (isValidCarType(carType)) {
             carTypeDAO.insertCarType(carType);
-            System.out.println("Car type added successfully");
         } else {
             System.out.println("Invalid car type data");
         }
@@ -24,7 +23,6 @@ public class CarTypeService {
     public void updateCarType(CarType carType) {
         if (isValidCarType(carType)) {
             carTypeDAO.updateCarType(carType);
-            System.out.println("Car type updated successfully");
         } else {
             System.out.println("Invalid car type data");
         }
@@ -32,7 +30,6 @@ public class CarTypeService {
 
     public void deleteCarType(int carTypeId) {
         carTypeDAO.deleteCarType(carTypeId);
-        System.out.println("Car type deleted successfully");
     }
 
     public ArrayList<CarType> getAllCarTypes() {

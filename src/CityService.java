@@ -9,7 +9,7 @@ public class CityService {
     public void addCity(City city) {
         if (isValidCity(city)) {
             cityDAO.insertCity(city);
-            System.out.println("City added successfully");
+
         } else {
             System.out.println("Invalid city data");
         }

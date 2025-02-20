@@ -39,6 +39,7 @@ public class Main {
             }
         }
         scanner.close();
+        System.out.println("System Closing...");
         db.closeConnection();
     }
 }
