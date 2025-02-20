@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class CustomerUI {
     private static CustomerService customerService = new CustomerService(new CustomerDAO(new Database()));
 
+
     public static void manageCustomers(Scanner scanner) {
         boolean running = true;
 
@@ -13,7 +14,8 @@ public class CustomerUI {
             System.out.println("2. View Customer");
             System.out.println("3. Update Customer");
             System.out.println("4. Delete Customer");
-            System.out.println("5. Back to Main Menu");
+            System.out.println("5. Add City");
+            System.out.println("6. Back to Main Menu");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -32,6 +34,9 @@ public class CustomerUI {
                    deleteCustomer(scanner);
                     break;
                 case 5:
+                    CityUI.manageCities(scanner);
+                    break;
+                case 6:
                     running = false;
                     break;
                 default:

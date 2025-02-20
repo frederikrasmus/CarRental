@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         LoadingScreen.loadingScreen();
-        Database database = Database.getInstance();
 
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
