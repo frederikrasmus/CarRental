@@ -65,9 +65,7 @@ CREATE TABLE rental (
    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/carRental";
 private static final String USERNAME = "your-username";
 private static final String PASSWORD = "your-password";
-
-4. Brug
-Loading Screen:
+4. 
 Programmet starter med en loading screen for en sjov visuel effekt.
 
 Hovedmenu:
