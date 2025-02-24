@@ -2,11 +2,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
+        Scanner scanner = new Scanner(System.in);
 
         LoadingScreen.loadingScreen();
+
+        System.out.println("Welcome to Kailua CarRental!");
+        System.out.print("Enter database username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter database password: ");
+        String password = scanner.nextLine();
+
+        Database.initialize(username,password);
+
         Database db = Database.getInstance();
 
-        Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
         while (running) {

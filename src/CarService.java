@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class CarService {
 
     private CarDAO carDAO;
@@ -26,6 +28,10 @@ public class CarService {
         } else {
             System.out.println("Invalid car data");
         }
+    }
+
+    public ArrayList<Car> getAllCars() {
+        return carDAO.getAllCars();
     }
 
     public void deleteCar(String registrationNumber) {

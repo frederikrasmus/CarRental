@@ -2,6 +2,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CarDAO {
 
@@ -82,6 +83,28 @@ public class CarDAO {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Car> getAllCars() {
+        ArrayList<Car> cars = new ArrayList<>();
+        String query = "select * from car";
+        try(PreparedStatement ps = database.getConnection().prepareStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                cars.add(new Car(
+                        rs.getString("registrationNumber"),
+                        rs.getString("brand"),
+                        rs.getString("model"),
+                        rs.getString("fuelType"),
+                        rs.getDate("firstRegistrationDate").toLocalDate(),
+                        rs.getInt("odometer"),
+                        rs.getInt("carType_Id")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cars;
     }
 
 

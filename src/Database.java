@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Database {
 
@@ -12,30 +13,50 @@ public class Database {
 
     //Database information
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/carRental";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "Gde45daq!";
 
 
-    private Database() {
-        createConnection();
+    private Database(String username, String password) {
+        createConnection(username, password);
     }
 
-    public static Database getInstance() {
+    public static Database initialize(String username, String password) {
         if (instance == null) {
-            instance = new Database();
+            instance = new Database(username, password);
             System.out.println("Connection to database succeeded");
         }
         return instance;
     }
 
-    // Denne metode opretter forbindelse til database
-    public void createConnection() {
 
-        try {
-            connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to establish connection", e);
+    public static Database getInstance() {
+        if (instance == null) {
+            System.out.println("Database not initialized. Call initialize() first.");
+        }
+        return instance;
+    }
+
+    // Denne metode opretter forbindelse til database
+    public void createConnection(String username, String password) {
+        boolean connected = false;
+
+        while(!connected) {
+            try {
+                connection = DriverManager.getConnection(DATABASE_URL, username, password);
+                statement = connection.createStatement();
+                connected = true;
+            } catch (SQLException e) {
+                if (e.getSQLState().equals("28000")) {
+                    System.out.println("Invalid Username or Password. Please try again.");
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Welcome to Kailua CarRental!");
+                    System.out.print("Enter database username: ");
+                    username = scanner.nextLine();
+                    System.out.print("Enter database password: ");
+                    password = scanner.nextLine();
+                } else {
+                    throw new RuntimeException("Failed to establish connection", e);
+                }
+            }
         }
     }
 

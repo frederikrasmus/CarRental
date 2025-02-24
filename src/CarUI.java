@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class CarUI {
@@ -18,7 +17,8 @@ public class CarUI {
             System.out.println("2. View Car");
             System.out.println("3. Update Car Odometer");
             System.out.println("4. Delete Car");
-            System.out.println("5. Back to Main Menu");
+            System.out.println("5. List all Cars");
+            System.out.println("6. Back to Main Menu");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -37,6 +37,9 @@ public class CarUI {
                     deleteCar(scanner);
                     break;
                 case 5:
+                    listAllCars();
+                    break;
+                case 6:
                     running = false;
                     break;
                 default:
@@ -134,5 +137,12 @@ public class CarUI {
         String registrationNumber = scanner.nextLine();
 
         carService.deleteCar(registrationNumber);
+    }
+
+    private static void listAllCars() {
+        ArrayList<Car> cars = carService.getAllCars();
+        for(Car car : cars) {
+            System.out.println(car);
+        }
     }
 }
