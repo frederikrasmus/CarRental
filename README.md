@@ -62,10 +62,9 @@ CREATE TABLE rental (
 );
 
 3. Opdater Database klassen med dine SQL database-oplysninger.
-   private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/carRental";
-private static final String USERNAME = "your-username";
-private static final String PASSWORD = "your-password";
-4. 
+   private static final String DATABASE_URL = "jdbc:mysql://localhost:(indsæt port)/carRental";
+   
+5. 
 Programmet starter med en loading screen for en sjov visuel effekt.
 
 Hovedmenu:
